@@ -30,24 +30,24 @@ class companyviewsets(viewsets.ModelViewSet):
         except Exception as e:
             pass
             
-# class YourViewSetClass(viewsets.ModelViewSet):
-#     queryset = Employee.objects.all()
-#     serializer_class = EmployeeSerializer
+class YourViewSetClass(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
 
-#     @action(detail=True, methods=['post'])
-#     def employees(self, request, pk=None):
-#         try:
-#             company_instance = company.objects.get(pk=pk)
-#             employee_data = request.data
-#             employee_data['company'] = company_instance.id
+    @action(detail=True, methods=['post'])
+    def employees(self, request, pk=None):
+        try:
+            company_instance = company.objects.get(pk=pk)
+            employee_data = request.data
+            employee_data['company'] = company_instance.id
 
-#             new_employee = Employee.objects.create(**employee_data)
-#             new_employee_serializer = EmployeeSerializer(new_employee, context={'request': request})
+            new_employee = Employee.objects.create(**employee_data)
+            new_employee_serializer = EmployeeSerializer(new_employee, context={'request': request})
             
-#             return Response(new_employee_serializer.data, status=status.HTTP_201_CREATED)
+            return Response(new_employee_serializer.data, status=status.HTTP_201_CREATED)
 
-#         except Exception as e:
-#             pass
+        except Exception as e:
+            pass
 
 
 class Employeeviewsets(viewsets.ModelViewSet):
