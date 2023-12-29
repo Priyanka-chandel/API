@@ -26,14 +26,9 @@ class companyviewsets(viewsets.ModelViewSet):
                 return Response({'message': 'No employees found for this company.'}, status=status.HTTP_404_NOT_FOUND)
 
             return Response(emps_serializer.data)
-
-        except company.DoesNotExist:
-            return Response({'message': 'Company not found.'}, status=status.HTTP_404_NOT_FOUND)
-
+        
         except Exception as e:
-            # Log or print the exception for debugging
-            print(f"Exception: {e}")
-            return Response({'message': 'An error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            pass
             
 class YourViewSetClass(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
