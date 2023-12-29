@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'railway',
         'USER':'postgres',
-        'PASSWORD':'CFggFG4fGG5edC6D*22*66c6f6EG3A1c',
+        'PASSWORD':'6cc6B6d4a5acgbBCaae6Gf6B5*Dg1C43',
         'HOST':'monorail.proxy.rlwy.net',
-        'PORT':'58405'
+        'PORT':'12822'
 
         
     }
@@ -133,13 +133,13 @@ STATIC_ROOT =os.path.join(BASE_DIR,'staticfiles_build','static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ],
-     'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ],
-}
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#     ],
+#      'DEFAULT_RENDERER_CLASSES': [
+#         'rest_framework.renderers.JSONRenderer',
+#     ],
+# }
