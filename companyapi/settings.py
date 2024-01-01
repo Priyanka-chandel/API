@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'railway',
         'USER':'postgres',
-        'PASSWORD':'dC3g2-FGc5dbEBA*d1G3cdED3bAFdfcG',
+        'PASSWORD':'D-5-c32bDB6ageEGA4c4gdd4AeFcab-g',
         'HOST':'roundhouse.proxy.rlwy.net',
-        'PORT':'16143'
+        'PORT':'46493'
 
         
     }
@@ -142,4 +142,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #      'DEFAULT_RENDERER_CLASSES': [
 #         'rest_framework.renderers.JSONRenderer',
 #     ],
-# }
+# }  
