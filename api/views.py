@@ -2,12 +2,10 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from api.models import company,Employee
 from api.Serializers import companySerializer,EmployeeSerializer
-from rest_framework.decorators import action
+from rest_framework.decorators import action,api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
+
 
 # Create your views here.
 
@@ -33,31 +31,6 @@ class companyviewsets(viewsets.ModelViewSet):
         except Exception as e:
             pass
 
-@csrf_exempt
-@require_POST
-def company_info(request):
-    try:
-        request_data = request.POST.dict()
-
-        # Simulate processing the request and creating a response
-        response = {
-            "message": "Company information retrieved successfully",
-            "status": "success",
-            "code": 200,
-            "data": request_data
-        }
-
-        return JsonResponse(response, status=200)
-    except Exception as e:
-        # Handle exceptions if needed
-        error_response = {
-            "message": "Error processing the request",
-            "status": "error",
-            "code": 500,
-            "error_details": str(e)
-        }
-        return JsonResponse(error_response, status=500)
-            
 class YourViewSetClass(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
@@ -77,6 +50,13 @@ class YourViewSetClass(viewsets.ModelViewSet):
         except Exception as e:
             pass
 
+@api_view(['POST'])
+def login_view(request):
+    # Assuming successful user login
+    success_message = 'User Successfully Logged In'
+
+    # Return a simplified response with only the message
+    return Response({'message': success_message})   
 
 class Employeeviewsets(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
