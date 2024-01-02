@@ -2,10 +2,12 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from api.models import company,Employee
 from api.Serializers import companySerializer,EmployeeSerializer
-from rest_framework.decorators import action,api_view
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 
@@ -50,14 +52,21 @@ class YourViewSetClass(viewsets.ModelViewSet):
         except Exception as e:
             pass
 
-@api_view(['POST'])
+@csrf_exempt  # Only use this decorator if you want to disable CSRF protection for this view
+@require_POST
 def login_view(request):
     # Assuming successful user login
     success_message = 'User Successfully Logged In'
 
-    # Return a simplified response with only the message
-    return Response({'message': success_message})   
+    # Create a dictionary with the desired structure
+    response_data = {
+        'status': True,
+        'message': success_message,
+        'code': 200
+    }
 
+    # Convert the dictionary to a JSON response
+    return JsonResponse(response_data, status=200)
 class Employeeviewsets(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
