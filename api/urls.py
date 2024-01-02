@@ -4,6 +4,7 @@ from api.views import companyviewsets,Employeeviewsets
 from rest_framework import routers
 from .views import YourViewSetClass
 
+
 router=routers.DefaultRouter()
 router.register(r'companies',companyviewsets)
 router.register(r'employees',Employeeviewsets)
