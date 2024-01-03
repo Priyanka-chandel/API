@@ -46,27 +46,37 @@ class YourViewSetClass(viewsets.ModelViewSet):
 
             new_employee = Employee.objects.create(**employee_data)
             new_employee_serializer = EmployeeSerializer(new_employee, context={'request': request})
-            
-            return Response(new_employee_serializer.data, status=status.HTTP_201_CREATED)
+            success_message = 'User Successfully Logged In'
+
+        # Create a dictionary with the desired structure
+            response_data = {
+                'status': True,
+                'message': success_message,
+                'code': 200
+            }
+
+        # Convert the dictionary to a JSON response
+            return JsonResponse(response_data, status=200)
+            #return Response(new_employee_serializer.data, status=status.HTTP_201_CREATED)
 
         except Exception as e:
             pass
 
-@csrf_exempt  # Only use this decorator if you want to disable CSRF protection for this view
-@require_POST
-def login_view(request):
-    # Assuming successful user login
-    success_message = 'User Successfully Logged In'
+# @csrf_exempt  # Only use this decorator if you want to disable CSRF protection for this view
+# @require_POST
+# def login_view(request):
+#     # Assuming successful user login
+#     success_message = 'User Successfully Logged In'
 
-    # Create a dictionary with the desired structure
-    response_data = {
-        'status': True,
-        'message': success_message,
-        'code': 200
-    }
+#     # Create a dictionary with the desired structure
+#     response_data = {
+#         'status': True,
+#         'message': success_message,
+#         'code': 200
+#     }
 
-    # Convert the dictionary to a JSON response
-    return JsonResponse(response_data, status=200)
+#     # Convert the dictionary to a JSON response
+#     return JsonResponse(response_data, status=200)
 class Employeeviewsets(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
