@@ -52,11 +52,11 @@ class YourViewSetClass(viewsets.ModelViewSet):
             response_data = {
                 'status': True,
                 'message': success_message,
-                'code': 200
+               
             }
 
         # Convert the dictionary to a JSON response
-            return JsonResponse(response_data, status=200)
+            return JsonResponse(response_data, status=201)
             #return Response(new_employee_serializer.data, status=status.HTTP_201_CREATED)
 
         except Exception as e:
